@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employer Dashboard | Education Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dashboard {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #14235c;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .dashboard h2 {
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #00aaff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0088cc;
+    }
+
+    .posted {
+      background: #101e4a;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .posted h3 {
+      margin-bottom: 10px;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Employer Dashboard</h1>
+    <nav>
+      <a href="index.html">← Home</a>
+    </nav>
+  </header>
+
+  <div class="dashboard">
+    <h2>Post an Internship</h2>
+    <form id="internshipForm">
+      <input type="text" id="company" placeholder="Company Name" required />
+      <input type="text" id="role" placeholder="Internship Role" required />
+      <textarea id="description" rows="4" placeholder="Brief Description" required></textarea>
+      <input type="text" id="skills" placeholder="Required Skills (comma separated)" />
+      <button type="submit">Post Internship</button>
+    </form>
+
+    <div id="output" class="posted"></div>
+  </div>
+
+  <script>
+    document.getElementById("internshipForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const company = document.getElementById("company").value;
+      const role = document.getElementById("role").value;
+      const description = document.getElementById("description").value;
+      const skills = document.getElementById("skills").value;
+
+      const output = `
+        <h3>Internship Posted Successfully ✅</h3>
+        <p><strong>Company:</strong> ${company}</p>
+        <p><strong>Role:</strong> ${role}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <p><strong>Skills Required:</strong> ${skills}</p>
+      `;
+
+      document.getElementById("output").innerHTML = output;
+      document.getElementById("internshipForm").reset();
+    });
+  </script>
+</body>
+</html>

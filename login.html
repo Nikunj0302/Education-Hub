@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Education Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 40px;
+      background-color: #14235c;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+    }
+    .login-container select,
+    .login-container input,
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .login-container button {
+      background-color: #00aaff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #0088cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+    <nav><a href="index.html">← Back to Home</a></nav>
+  </header>
+
+  <div class="login-container">
+    <h2>Select Your Role</h2>
+    <select id="role">
+      <option value="">-- Choose --</option>
+      <option value="student">Student</option>
+      <option value="employer">Employer</option>
+    </select>
+
+    <input type="text" placeholder="Email" id="email">
+    <input type="password" placeholder="Password" id="password">
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const role = document.getElementById("role").value;
+      if (role === "student") {
+        window.location.href = "dashboard-student.html";
+      } else if (role === "employer") {
+        window.location.href = "dashboard-employer.html";
+      } else {
+        alert("Please select a role.");
+      }
+    }
+  </script>
+</body>
+</html>

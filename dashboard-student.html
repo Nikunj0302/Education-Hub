@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard | Education Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dashboard {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #14235c;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .dashboard h2 {
+      margin-bottom: 20px;
+      color: #00ffff;
+    }
+
+    .skills-list label {
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .results {
+      margin-top: 20px;
+      background: #101e4a;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #00aaff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0088cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Dashboard</h1>
+    <nav>
+      <a href="index.html">← Home</a>
+    </nav>
+  </header>
+
+  <div class="dashboard">
+    <h2>Skill Match Tool</h2>
+    <p>Select your current skills to see which careers or internships might suit you:</p>
+
+    <form class="skills-list">
+      <label><input type="checkbox" value="Web Development"> Web Development</label>
+      <label><input type="checkbox" value="Graphic Design"> Graphic Design</label>
+      <label><input type="checkbox" value="Data Analysis"> Data Analysis</label>
+      <label><input type="checkbox" value="Marketing"> Marketing</label>
+      <label><input type="checkbox" value="Python Programming"> Python Programming</label>
+      <label><input type="checkbox" value="Communication"> Communication</label>
+    </form>
+
+    <button onclick="matchSkills()">Find Matching Roles</button>
+
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    function matchSkills() {
+      const skills = document.querySelectorAll('input[type="checkbox"]:checked');
+      let results = "";
+
+      if (skills.length === 0) {
+        results = "<p>Please select at least one skill.</p>";
+      } else {
+        results += "<h3>Based on your skills, consider these roles:</h3><ul>";
+
+        skills.forEach(skill => {
+          switch (skill.value) {
+            case "Web Development":
+              results += "<li>Frontend Intern at TechStart</li>";
+              break;
+            case "Graphic Design":
+              results += "<li>Design Intern at Creatix</li>";
+              break;
+            case "Data Analysis":
+              results += "<li>Data Intern at StatBridge</li>";
+              break;
+            case "Marketing":
+              results += "<li>Marketing Trainee at BuzzWave</li>";
+              break;
+            case "Python Programming":
+              results += "<li>Python Developer Intern at CodeSprint</li>";
+              break;
+            case "Communication":
+              results += "<li>Client Relations Intern at LinkUp</li>";
+              break;
+          }
+        });
+
+        results += "</ul>";
+      }
+
+      document.getElementById("results").innerHTML = results;
+    }
+  </script>
+</body>
+</html>
